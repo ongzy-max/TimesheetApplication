@@ -1,0 +1,29 @@
+<div class="container">
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Project</th>
+                <th>Task</th>
+                <th>Assigned To</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let timesheet of timesheets">
+                <td> {{ timesheet.project }} </td>
+                <td> {{ timesheet.task }} </td>
+                <td> {{ timesheet.user.name }} </td>
+                <td> {{ timesheet.from }} </td>
+                <td> {{ timesheet.to }} </td>
+                <td> {{ timesheet.status.status }} </td>
+                <td>
+                    <button (click) = "updateTimesheet(timesheet.id, timesheet.project, timesheet.task, timesheet.user.id, timesheet.from, timesheet.to, timesheet.status.id)" class="btn btn-info">Update</button>
+                    <button (click) = "deleteTimesheet(timesheet.id)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

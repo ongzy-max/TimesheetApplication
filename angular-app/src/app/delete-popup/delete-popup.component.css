@@ -1,0 +1,39 @@
+/* Dialog container */
+.dialog_container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  /* Paragraph inside dialog container */
+  .dialog_container p {
+    margin-bottom: 20px;
+  }
+  
+  /* Delete button */
+  .delete {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  /* Close button */
+  .close {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Hover effect for buttons */
+  .delete:hover,
+  .close:hover {
+    opacity: 0.8;
+  }

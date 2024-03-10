@@ -1,0 +1,19 @@
+<main class="main">
+  <div class="content">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
+      <a class="navbar-brand" routerLink="">Angular App</a>
+  
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+              <input type="text" id="searchTerm" formControlName="searchTerm">
+              <button type="submit">Search</button>
+              <button type="button" (click)="onCreateClick()">Create</button>
+            </form>
+            
+          </div>
+      </div>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
+</main>

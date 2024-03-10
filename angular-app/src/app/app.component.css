@@ -1,0 +1,73 @@
+/* Main container */
+.main {
+    padding: 20px;
+    width: auto;
+  }
+  
+  /* Content container */
+  .content {
+    max-width: 1200px; /* Adjust max-width as needed */
+    margin: 20px auto; /* Center content */
+    margin-bottom: 80px auto;
+  }
+  
+  /* Navbar */
+  .navbar {
+    border-bottom: 1px solid #ccc;
+    display: flex; /* Make content container a flex container */
+    flex-direction: column; /* Arrange children vertically */
+    flex-grow: 1;
+  }
+  
+  /* Navbar brand */
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 1%;
+  }
+  
+  /* Navbar links */
+  .navbar-nav {
+    margin-left: auto; /* Align form to the right */
+  }
+  
+  /* Search form */
+  form {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Search input */
+  input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  /* Search button */
+  button[type="submit"],
+  button[type="button"] {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    margin-right: 2%;
+  }
+  
+  /* Search button hover effect */
+  button[type="submit"]:hover,
+  button[type="button"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Search button disabled state */
+  button[type="submit"]:disabled,
+  button[type="button"]:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }

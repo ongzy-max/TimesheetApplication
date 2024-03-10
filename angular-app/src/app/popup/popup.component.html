@@ -1,0 +1,31 @@
+<div class= "dialog_container">
+<h1 mat-dialog-title>Timesheet Entry</h1>
+<div mat-dialog-content>
+  <form [formGroup]="timesheetForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <label for="project">Project</label>
+    <input type="text" id="project" name="project" formControlName="project" [(ngModel)]="this.data.project" required>
+    <label for="task">Task</label>
+    <input type="text" id="task" name="task" formControlName="task" [(ngModel)]="this.data.task" required>
+    <label for="fromDate">Date From</label>
+    <input type="date" id="fromDate" name="fromDate" formControlName="fromDate" [(ngModel)]="start" (change)="compareDates()" [(ngModel)]="this.data.fromDate" required>
+    <label for="toDate">Date To</label>
+    <input type="date" id="toDate" name="toDate" formControlName="toDate" [(ngModel)]="end" (change)="compareDates()" [(ngModel)]="this.data.toDate" required>
+    <label for="status">Status</label>
+    <select id="status" name="status" formControlName="statusId" [(ngModel)]="this.data.statusId" required>
+        <option *ngFor="let status of statuses" [value]="status.id">
+            {{ status.status }}
+        </option>
+    </select>
+    <label for="user">Asigned To</label>
+    <select id="user" name="user" formControlName="userId" [(ngModel)]="this.data.userId" required>
+        <option *ngFor="let user of users" [value]="user.id">
+            {{ user.name }}
+        </option>
+    </select>
+    <div id="message">{{message}}</div>
+    <button type="submit" id="submit" name="submit" mat-button [disabled]="message !== ''">Save</button>
+  </form>
+<div mat-dialog-actions>
+  <button class="closeButton" mat-button mat-dialog-close (click)="closeDialog()">Close</button>
+</div>
+</div>
