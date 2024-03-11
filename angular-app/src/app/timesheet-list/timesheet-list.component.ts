@@ -21,7 +21,7 @@ export class TimesheetListComponent implements OnInit {
         CommonModule
     ]
   })
-  
+
   timesheets: Timesheet[] | undefined;
   searchTerm = this.route.snapshot.paramMap.get('searchTerm')
   constructor(private timesheetService: TimesheetService,
@@ -29,13 +29,13 @@ export class TimesheetListComponent implements OnInit {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private dialogRef: MatDialogRef<any>) {
-      this.route.paramMap.subscribe(params => {
+      this.route.paramMap.subscribe((params: any) => {
         this.ngOnInit();
     });
   }
   
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params: { get: (arg0: string) => any; }) => {
       this.searchTerm = params.get('searchTerm');
       if (this.searchTerm && this.searchTerm !== '') {
         this.searchTask(this.searchTerm);
@@ -48,14 +48,14 @@ export class TimesheetListComponent implements OnInit {
 
   private searchTask(searchTerm: string) {
     console.log("Search Term: " + searchTerm)
-    this.timesheetService.searchTimesheetList(searchTerm).subscribe(data => {
+    this.timesheetService.searchTimesheetList(searchTerm).subscribe((data: any) => {
       this.timesheets = data;
       console.log("Search Data" + data)
     });
   }
 
   private allTask() {
-    this.timesheetService.getAllTimesheetList().subscribe(data => {
+    this.timesheetService.getAllTimesheetList().subscribe((data: any) => {
       this.timesheets = data;
     });
   }
@@ -74,7 +74,7 @@ export class TimesheetListComponent implements OnInit {
       }
     })
     
-    this.dialogRef.afterClosed().subscribe(result => {
+    this.dialogRef.afterClosed().subscribe((result: any) => {
       window.location.reload();
       this.dialogRef.close();
     })
@@ -88,7 +88,7 @@ export class TimesheetListComponent implements OnInit {
       }
     })
 
-    this.dialogRef.afterClosed().subscribe(result => {
+    this.dialogRef.afterClosed().subscribe((result: any) => {
       window.location.reload();
       this.dialogRef.close();
     })
@@ -96,6 +96,29 @@ export class TimesheetListComponent implements OnInit {
     this.timesheetService.deleteTimesheetList(id).subscribe(result =>{
       window.location.reload();
     }) */
+  }
+
+  sortColumn: string = ''; // To keep track of the column being sorted
+  sortOrder: string = 'asc'; // Initial sorting order
+
+  sort(colName: string) {
+    if (this.sortColumn === colName) {
+      // If same column is clicked again, reverse the sorting order
+      this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+    } else {
+      // If a new column is clicked, set the sorting column and order
+      this.sortColumn = colName;
+      this.sortOrder = 'asc';
+    }
+
+    // Sort the timesheets array based on the selected column and sorting order
+    this.timesheets?.sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => {
+      const aValue = a[colName];
+      const bValue = b[colName];
+      if (aValue < bValue) return this.sortOrder === 'asc' ? -1 : 1;
+      if (aValue > bValue) return this.sortOrder === 'asc' ? 1 : -1;
+      return 0;
+    });
   }
 }
 
